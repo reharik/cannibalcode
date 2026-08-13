@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = "Cannibal Code";
 export const SITE_DESCRIPTION =
-	"Long-form posts on TypeScript library design — writing libraries, then living with them.";
+  "Notes on TypeScript library design, from the author of smart-enum and ioc-manifest";
