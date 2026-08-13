@@ -1,0 +1,219 @@
+/*
+  Cannibal Code — global styles.
+  Two materials: paper (the page) and char (the code slabs, dark in both
+  color schemes). Boldness is spent on the slabs; everything else stays quiet.
+*/
+
+:root {
+  color-scheme: light;
+  /* palette */
+  --porcelain: #faf9f6;
+  --cast-iron: #1d1b18;
+  --char: #121110;
+  --parchment: #dfdbd2;
+  --verdigris: #2e7a6e;
+  --patina: #8fd6c7;
+
+  /* roles */
+  --bg: var(--porcelain);
+  --ink: var(--cast-iron);
+  --accent: var(--verdigris);
+  --muted: color-mix(in srgb, var(--ink) 68%, var(--bg));
+  --rule: color-mix(in srgb, var(--ink) 15%, var(--bg));
+
+  /* geometry */
+  --measure: 66ch; /* ~70 characters of Charter */
+  --measure-px: 37rem; /* same width, usable inside monospace contexts */
+  --breakout: 52rem; /* widest a code slab may grow */
+  --gutter: 1.25rem;
+  --notch: 0.875rem; /* the bite */
+
+  --font-body: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia,
+    serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: var(--cast-iron);
+    --ink: var(--parchment);
+    --accent: var(--patina);
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background: var(--bg);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+main {
+  width: 100%;
+  max-width: calc(var(--breakout) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  box-sizing: border-box;
+  flex: 1;
+}
+
+/* Prose sits at reading measure; only slabs may exceed it, so they are
+   excluded here — their width rules live on `pre` below. */
+.prose > :not(pre) {
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+  margin: 1.6em auto 0.5em;
+}
+h1 {
+  font-size: 1.9rem;
+  margin-top: 0;
+}
+h2 {
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+h4,
+h5,
+h6 {
+  font-size: 1.05rem;
+}
+strong,
+b {
+  font-weight: 700;
+}
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+p {
+  margin-block: 0 1.1em;
+}
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Inline code: a voice change, not a material change. No pill, no box —
+   accent-colored monospace that keeps the paragraph's baseline. */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  color: var(--accent);
+  background: none;
+  padding: 0;
+}
+
+/* Code slabs: always Char, in both schemes, with one corner bitten off.
+   Width is content-driven — floored at the prose measure, capped at the
+   breakout — so one-liners don't rattle around in a wide slab. */
+pre {
+  background-color: var(--char) !important; /* shiki inlines its own bg */
+  color-scheme: dark; /* dark scrollbar inside the slab in both modes */
+  width: fit-content;
+  min-width: min(var(--measure-px), 100%);
+  max-width: 100%;
+  margin: 0 auto 1.4em;
+  padding: 1.1em 1.25em;
+  box-sizing: border-box;
+  border-radius: 0;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--notch)) 0,
+    100% var(--notch),
+    100% 100%,
+    0 100%
+  );
+  overflow-x: auto;
+  line-height: 1.6;
+}
+pre code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: inherit;
+  background: none;
+  padding: 0;
+}
+
+/* Full-bleed slabs on small screens; scrolling stays inside the slab. */
+@media (max-width: 40rem) {
+  h1 {
+    font-size: 1.55rem;
+  }
+  pre {
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    margin-inline: calc(-1 * var(--gutter));
+  }
+}
+
+blockquote {
+  border-left: 2px solid var(--accent);
+  padding: 0 0 0 1em;
+  margin: 0 auto 1.1em;
+  color: var(--muted);
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 2em auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.4em;
+}
+th,
+td {
+  text-align: left;
+  padding: 0.4em 0.75em 0.4em 0;
+  border-bottom: 1px solid var(--rule);
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.sr-only {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

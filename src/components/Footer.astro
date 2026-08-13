@@ -1,0 +1,24 @@
+---
+const today = new Date();
+---
+
+<footer>
+	&copy; {today.getFullYear()} Raif Harik ·
+	<a href="https://github.com/reharik" target="_blank">GitHub</a> ·
+	<a href="/rss.xml">RSS</a>
+</footer>
+<style>
+	footer {
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		color: var(--muted);
+		text-align: center;
+		padding: 2em var(--gutter);
+	}
+	footer a {
+		color: var(--muted);
+	}
+	footer a:hover {
+		color: var(--accent);
+	}
+</style>

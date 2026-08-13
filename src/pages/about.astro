@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/BlogPost.astro';
+---
+
+<Layout
+	title="About Me"
+	description="About Me"
+	pubDate={new Date('August 12 2026')}
+>
+	<p>I'm Raif. I build line-of-business software — the operational tools people use all day to actually do their jobs — usually as the first engineer on a fuzzy idea.</p>
+
+<p>This blog is mostly about two TypeScript libraries I wrote and then had to live with:</p>
+
+<p><strong><a href="https://github.com/reharik/smart-enums">smart-enum</a></strong> — enums that carry their own behavior, serialize cleanly, and live in one discoverable place instead of five.</p>
+
+<p><strong><a href="https://github.com/reharik/ioc-manifest">ioc-manifest</a></strong> — build-time dependency-injection codegen over Awilix, with a static dependency graph that catches wiring bugs before they run.</p>
+
+<p>I'm the author of both and their most annoyed user. Every post here comes out of something that broke, surprised me, or turned out to be wrong in a real application.</p>
+
+<p>I started blogging in 2010 at <a href="http://cannibalcode.blogspot.com">Cannibal Code</a>, writing about FubuMVC and StructureMap. I stopped for about sixteen years. The problems turned out to be the same ones.</p>
+
+	
+</Layout>
