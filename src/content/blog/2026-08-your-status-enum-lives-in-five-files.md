@@ -176,6 +176,8 @@ My first implementation was in JS, long ago, and it was simple to write and easy
 
 But this is the flat version: one canonical, discoverable, behavior-carrying declaration per concept, instead of five representations and four satellites.
 
+Full documentation: <a href="https://reharik.github.io/smart-enums/" target="_blank" rel="noopener">smart-enum docs</a>
+
 ```
 npm install @reharik/smart-enum
 ```
