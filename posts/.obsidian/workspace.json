@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Your status enum lives in five files.md",
-                "mode": "preview",
-                "source": true
+                "file": "I argued IoC was pointless in JavaScript, forgetting I’d published my own container to npm..md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "Your status enum lives in five files"
+              "title": "I argued IoC was pointless in JavaScript, forgetting I’d published my own container to npm."
             }
           }
         ]
@@ -190,6 +190,7 @@
   },
   "active": "020d048f255eb9f3",
   "lastOpenFiles": [
+    "I argued IoC was pointless in JavaScript, forgetting I’d published my own container to npm..md",
     "Welcome.md",
     "Your status enum lives in five files.md"
   ]
