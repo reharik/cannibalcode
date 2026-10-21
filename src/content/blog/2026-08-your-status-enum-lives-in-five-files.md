@@ -1,6 +1,7 @@
 ---
 title: "Your status enum lives in five files"
 description: "And the as const trick everyone reaches for only fixes one of them"
+series: smart-enums
 pubDate: "Aug 14 2026"
 ---
 
@@ -184,4 +185,4 @@ npm install @reharik/smart-enum
 
 ---
 
-_Next in this series: what happens when a smart enum crosses a serialization boundary and `===` quietly starts returning `false`._
+_Next in this series: Why your monorepo has two copies of your singleton — === was true in dev and false in prod._

@@ -1,6 +1,7 @@
 ---
 title: "Why your monorepo has two copies of your singleton"
 description: "=== was true in dev and false in prod"
+series: smart-enums
 pubDate: "Oct 21 2026"
 ---
 
