@@ -1,6 +1,6 @@
 ---
-title: "I argued IoC was pointless in JavaScript, forgetting I’d published my own container to npm."
-description: "Why I built ioc-manifest: convention-based DI codegen for TypeScript and Awilix."
+title: "I argued IoC was pointless in JavaScript, forgetting I’d published my own container to npm"
+description: "Why I built ioc-manifest: convention-based DI codegen for TypeScript and Awilix"
 pubDate: "Oct 20 2026"
 ---
 
