@@ -17,10 +17,11 @@ export async function GET(context) {
       description: post.data.description,
       pubDate: post.data.pubDate,
       link: `/blog/${post.id}/`,
-      tags: post.data.categories,
+      categories: post.data.categories,
       content: sanitizeHtml(parser.render(post.body), {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
       }),
+      series: post.data.series,
     })),
   });
 }
