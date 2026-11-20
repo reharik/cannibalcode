@@ -1,0 +1,70 @@
+---
+// import { Image } from 'astro:assets';
+// import screenshot1 from '../assets/work/homeroll-screenshot-1.png';
+// import screenshot2 from '../assets/work/homeroll-screenshot-2.png';
+// import screenshot3 from '../assets/work/homeroll-screenshot-3.png';
+// import screenshot4 from '../assets/work/homeroll-screenshot-4.png';
+import Placeholder from '../components/Placeholder.astro';
+import WorkPage from '../layouts/WorkPage.astro';
+---
+
+<WorkPage
+	title="Homeroll"
+	description="A private photo stream for my family. In production; built end to end in TypeScript."
+>
+	<h1>Homeroll — <a href="https://homeroll.app">homeroll.app</a></h1>
+	<p class="repo"><a href="https://github.com/reharik/photo-app">github.com/reharik/photo-app</a></p>
+
+	<p>
+		My extended family is spread across every platform, and some are on none. So photos get shared
+		by text, and fifteen minutes later they're lost in the thread. I wanted a place we could share
+		them without putting the family on a social feed, and without confusing the heck out of my aunts
+		in the old country.
+	</p>
+	<p>
+		Homeroll is a private family photo stream. Anyone can sign up and upload, and nobody sees
+		anything that hasn't been shared with them directly. It's built against the threats that
+		actually matter for family photos: nothing indexed or crawlable, nothing sold or trained on, no
+		feed. Share links exist because people need them, but they're unguessable, you can see who has
+		one, and you can revoke it. It is not locked down like a bank, because then nobody's aunt would
+		use it. And it has every feature I ever wanted.
+	</p>
+
+	<div class="shots">
+		<Placeholder block label="Homeroll screenshot 1" path="src/assets/work/homeroll-screenshot-1.png" />
+		<Placeholder block label="Homeroll screenshot 2" path="src/assets/work/homeroll-screenshot-2.png" />
+		<Placeholder block label="Homeroll screenshot 3" path="src/assets/work/homeroll-screenshot-3.png" />
+		<Placeholder block label="Homeroll screenshot 4 (optional)" path="src/assets/work/homeroll-screenshot-4.png" />
+	</div>
+
+	<h2>How it's built</h2>
+	<ul>
+		<li>TypeScript end to end</li>
+		<li>Domain-driven design: domain events, repositories, async services</li>
+		<li>
+			Dependency injection via ioc-manifest and typed enums via smart-enums, both battle-tested here
+			before publishing
+		</li>
+		<li>React, Node, Postgres, S3; Nx monorepo, Vite, Playwright e2e</li>
+		<li>Installable on phones as a PWA</li>
+		<li>Self-hosted on AWS behind Caddy, containers deployed via GitHub Actions</li>
+	</ul>
+	<p>
+		<strong>The hard part:</strong> the photo pipeline. An upload kicks off optimization, storage, and
+		notifications, each async and each able to fail on its own. Keeping that lifecycle coherent while
+		surfacing it to the user, then deep-linking in-app notifications back into it: that's where most
+		of the real engineering went.
+	</p>
+</WorkPage>
+
+<style>
+	.repo {
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+	}
+	.shots {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+		gap: 1rem;
+	}
+</style>

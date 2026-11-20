@@ -1,0 +1,40 @@
+---
+import WorkPage from '../layouts/WorkPage.astro';
+---
+
+<WorkPage
+	title="smart-enums & ioc-manifest"
+	description="Two npm libraries: one place for every constant, and build-time dependency injection for TypeScript."
+>
+	<h1>Libraries — npm</h1>
+	<p>Two packages I use in production. smart-enums is older than Homeroll; ioc-manifest came out of it.</p>
+
+	<h2>smart-enums</h2>
+	<p>
+		One declarative place for every constant in a codebase, with derived values and behavior attached
+		to each. I've been sneaking this idea into every job since my C# days, usually failing or
+		regretting it. Homeroll is where I finally used it to the breaking point and got it right.
+		<a href="https://www.npmjs.com/package/@reharik/smart-enum">npm</a>
+		<a href="/blog/2026-08-your-status-enum-lives-in-five-files/">post</a>
+	</p>
+
+	<h2>ioc-manifest</h2>
+	<p>
+		Build-time dependency injection for TypeScript. It reads your factories and classes, checks the
+		wiring, and generates a typed Awilix container, so nothing is registered by hand and nothing is
+		scanned at runtime. Loosely inspired by StructureMap's conventions, which I'd used in C# and
+		missed.
+		<a href="https://www.npmjs.com/package/ioc-manifest">npm</a>
+		<a href="/blog/2026-10-20-i-argued-ioc-was-pointless/">post</a>
+	</p>
+
+	<p>
+		Posts live at <a href="/blog">cannibalcode.com</a> and also run on
+		<a href="https://medium.com/@harik.raif">Medium</a> and <a href="https://dev.to/reharik">dev.to</a>.
+		The ioc-manifest piece was picked up by
+		<a
+			href="https://javascript.plainenglish.io/i-argued-ioc-was-pointless-in-javascript-forgetting-id-published-my-own-container-to-npm-90492c1a0346"
+			>JavaScript in Plain English</a
+		>.
+	</p>
+</WorkPage>

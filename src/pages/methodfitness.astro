@@ -1,0 +1,39 @@
+---
+// import { Image } from 'astro:assets';
+// import screenshot from '../assets/work/methodfitness-screenshot.png';
+import Placeholder from '../components/Placeholder.astro';
+import WorkPage from '../layouts/WorkPage.astro';
+---
+
+<WorkPage
+	title="MethodFitness"
+	description="Scheduling and payments for my brother's training studio. Fifteen years in production."
+>
+	<h1>MethodFitness</h1>
+	<p>
+		My brother owns a personal training studio and needed scheduling and payments that fit how
+		trainers actually work. I needed to learn how to write enterprise-level software and a place to
+		sharpen my skills. So I built it; that was fifteen years ago and it's still running.
+	</p>
+	<p>
+		Trainers book their own sessions, clients prepay for packages with per-client and per-trainer
+		pricing, and the system works out commissions and payouts. It runs the business: the schedule,
+		the money, and the weekly reports come out of it.
+	</p>
+
+	<Placeholder
+		block
+		label="MethodFitness screenshot, names blurred"
+		path="src/assets/work/methodfitness-screenshot.png"
+	/>
+
+	<h2>How it's built</h2>
+	<ul>
+		<li>Originally C# / ASP.NET MVC with a custom JavaScript front end; still in production</li>
+		<li>Extended today with TypeScript/Node on AWS Lambda for scheduled email reporting</li>
+		<li>
+			It's also been my test bed for fifteen years: when something new comes out, this is where I try
+			it for real
+		</li>
+	</ul>
+</WorkPage>

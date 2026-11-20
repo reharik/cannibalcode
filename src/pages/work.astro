@@ -1,0 +1,116 @@
+---
+// import { Image } from 'astro:assets';
+// import homerollCard from '../assets/work/homeroll-card.png';
+// import methodfitnessCard from '../assets/work/methodfitness-card.png';
+// import librariesCard from '../assets/work/libraries-card.png';
+// import shopCard from '../assets/work/shop-card.png';
+import Placeholder from '../components/Placeholder.astro';
+import WorkPage from '../layouts/WorkPage.astro';
+
+// When an image exists: uncomment its import above, then replace the
+// card's <Placeholder block /> with <Image src={...} alt="..." />.
+const cards = [
+	{
+		title: 'Homeroll',
+		blurb:
+			'A private photo stream for my family, because group texts lose photos and nobody wants their aunts on a social feed. In production; built end to end in TypeScript.',
+		href: '/homeroll',
+		imagePath: 'src/assets/work/homeroll-card.png',
+	},
+	{
+		title: 'MethodFitness',
+		blurb:
+			"Scheduling and payments for my brother's training studio. Fifteen years in production and still my test bed for anything new.",
+		href: '/methodfitness',
+		imagePath: 'src/assets/work/methodfitness-card.png',
+	},
+	{
+		title: 'smart-enums & ioc-manifest',
+		blurb:
+			'Two npm libraries that exist because I needed them: one place for every constant, and build-time dependency injection for TypeScript.',
+		href: '/libraries',
+		imagePath: 'src/assets/work/libraries-card.png',
+	},
+	{
+		title: 'The shop',
+		blurb:
+			'I built my woodshop myself, slab up. Cabinetry, turning, and the occasional rig that lets a wooden vase hold live flowers.',
+		href: '/shop',
+		imagePath: 'src/assets/work/shop-card.png',
+	},
+];
+---
+
+<WorkPage
+	title="Raif Harik"
+	description="I take products from nothing to shipped. Twenty years of writing software, the last eight in TypeScript."
+>
+	<header class="intro">
+		<h1>Raif Harik</h1>
+		<p class="oneliner">
+			I take products from nothing to shipped. Twenty years of writing software, the last eight in
+			TypeScript.
+		</p>
+		<p class="links">
+			Austin, TX ·
+			<a href="mailto:harik.raif@gmail.com">email</a> ·
+			<a href="https://github.com/reharik">GitHub</a> ·
+			<a href="https://www.npmjs.com/~reharik">npm</a> ·
+			<a href="/blog">Writing</a>
+		</p>
+	</header>
+
+	<ul class="cards">
+		{
+			cards.map((card) => (
+				<li>
+					<a href={card.href}>
+						<Placeholder block label={`${card.title} card image`} path={card.imagePath} />
+						<h2>{card.title}</h2>
+						<p>{card.blurb}</p>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</WorkPage>
+
+<style>
+	.intro {
+		margin-bottom: 2.5rem;
+	}
+	.oneliner {
+		font-size: 1.2rem;
+	}
+	.links {
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		color: var(--muted);
+	}
+	.cards {
+		/* Wider than the prose measure; the scoped selector outranks global.css. */
+		max-width: var(--breakout);
+		list-style: none;
+		padding: 0;
+		margin-top: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+		gap: 2.5rem 2rem;
+	}
+	.cards a {
+		display: block;
+		text-decoration: none;
+		color: var(--ink);
+	}
+	.cards h2 {
+		font-size: 1.2rem;
+		margin: 0 0 0.3em;
+	}
+	.cards p {
+		color: var(--muted);
+		margin: 0;
+	}
+	.cards a:hover h2 {
+		color: var(--accent);
+	}
+</style>

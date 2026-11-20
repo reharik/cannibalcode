@@ -1,0 +1,60 @@
+---
+// Visible TODO marker for content that hasn't been supplied yet.
+// Inline (default) for links like [npm] / [post]; `block` for image slots.
+// Search the codebase for "<Placeholder" to find every one left to fill.
+interface Props {
+	label: string;
+	/** Expected file path for an image slot, shown in the box. */
+	path?: string;
+	block?: boolean;
+}
+
+const { label, path, block = false } = Astro.props;
+---
+
+{
+	block ? (
+		<div class="placeholder block" role="img" aria-label={`Placeholder: ${label}`}>
+			<span class="tag">TODO</span>
+			<span>{label}</span>
+			{path && <code>{path}</code>}
+		</div>
+	) : (
+		<span class="placeholder inline">
+			<span class="tag">TODO</span> {label}
+		</span>
+	)
+}
+
+<style>
+	.placeholder {
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		color: var(--muted);
+		border: 1px dashed var(--accent);
+	}
+	.inline {
+		padding: 0 0.35em;
+		white-space: nowrap;
+	}
+	.block {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.35em;
+		aspect-ratio: 16 / 10;
+		padding: 1rem;
+		box-sizing: border-box;
+		text-align: center;
+		margin-bottom: 1.1em;
+	}
+	.tag {
+		font-weight: 600;
+		color: var(--accent);
+	}
+	code {
+		font-size: 0.75rem;
+		overflow-wrap: anywhere;
+	}
+</style>

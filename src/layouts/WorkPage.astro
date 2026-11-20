@@ -1,0 +1,50 @@
+---
+// Shell for the /work landing page and its detail pages. Same chrome as
+// BlogPost (head, header, footer, prose column) but without a date.
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			article {
+				margin-top: 2.5rem;
+			}
+			.back {
+				font-family: var(--font-mono);
+				font-size: 0.8rem;
+				margin-top: 2.5rem;
+			}
+			.back a {
+				color: var(--muted);
+			}
+			.back a:hover {
+				color: var(--accent);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="prose">
+					<slot />
+					{Astro.url.pathname.replace(/\/$/, '') !== '/work' && (
+						<p class="back"><a href="/work">← Work</a></p>
+					)}
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
